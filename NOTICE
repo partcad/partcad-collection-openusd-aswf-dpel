@@ -1,0 +1,19 @@
+partcad-collection-openusd-aswf-dpel
+====================================
+
+This PartCAD package serves the ASWF Digital Production Example Library's USD as PartCAD parts.
+
+The code in this repository (the `aswf_dpel_repo.py` repository plugin, the shared
+`usd_assets.py`, the PartCAD configuration and the tests) is:
+
+    Copyright 2026 PartCAD
+    Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+No asset is included in this repository. The assets, their layers and their
+textures are fetched on demand from https://dpel-assets.aswf.io,
+and remain their authors's, under the ASWF Digital Assets License v1.1
+(https://dpel.aswf.io/alab/alab-license/): ALab (c) Animal Logic, now Netflix
+Animation Studios; 4004 Moore Lane (c) Intel Corporation.
+
+ALab, 4004 Moore Lane, MaterialX and the Academy Software Foundation's marks
+are their owners'. This package is not affiliated with or endorsed by them.

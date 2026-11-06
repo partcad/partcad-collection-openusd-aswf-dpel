@@ -1,0 +1,68 @@
+# PartCAD package: the ASWF Digital Production Example Library's USD as parts, served by a repository plugin.
+#
+# Published as //pub/collection/openusd/aswf-dpel/assets: this package is
+# //pub/collection/openusd/aswf-dpel, and its one external dependency 'assets' is served
+# by the aswf_dpel_repo plugin - the USD of the ASWF Digital Production Example
+# Library (dpel.aswf.io): a child package per scene (alab, moore-lane,
+# materialx-lion), a part per asset,
+# each 'type: usd', built by PartCAD's own part type of that name.
+name: //pub/collection/openusd/aswf-dpel
+
+desc: |
+  The USD of the Academy Software Foundation's Digital Production Example
+  Library (https://dpel.aswf.io) as PartCAD parts: Animal Logic's ALab and each
+  of its entities, Intel's 4004 Moore Lane, and the MaterialX lion. No geometry
+  is vendored: every asset is read out of the library's archives, with range
+  requests, when it is first built, under the ASWF Digital Assets License v1.1
+  (see the README).
+url: https://dpel.aswf.io
+
+# The first release whose //builtin has the 'usd' part type every part here
+# is.
+partcad: ">=0.9.6"
+
+# Made to be looked at, rendered or simulated: nothing in them says they are
+# made to be manufactured. The plugin says the same of 'assets'.
+manufacturable: false
+
+docs:
+  name: The ASWF Digital Production Example Library's USD for PartCAD
+  usage: |
+    ```shell
+    pc list parts //pub/collection/openusd/aswf-dpel/assets/alab
+    pc search parts -P //pub/collection/openusd/aswf-dpel/assets/alab -k beaker
+    pc inspect //pub/collection/openusd/aswf-dpel/assets/alab:decor_jar01
+    ```
+
+dependencies:
+  assets:
+    type: external
+    plugin: :aswf_dpel_repo
+    desc: The library's USD, a child package per scene and a part per asset.
+
+repositories:
+  aswf_dpel_repo:
+    type: basic
+    path: aswf_dpel_repo.py
+    desc: Serves the ASWF Digital Production Example Library's USD as 'usd' parts.
+    # Every parameter here is yours to change without touching this package,
+    # in your own ~/.partcad/config.yaml, under 'parameters', by the plugin's
+    # name ('//pub/collection/openusd/aswf-dpel:aswf_dpel_repo'), or - all but what says it is
+    # yours alone - in a package of your own, with an enrich of the plugin
+    # (see the README).
+    parameters:
+      textures:
+        type: bool
+        default: false
+        desc: >-
+          Whether a part's USDZ carries the asset's textures too. PartCAD
+          builds a part from its geometry, so they are left out unless you
+          want the package complete - to open it in another USD application,
+          say.
+      max_size_mb:
+        type: float
+        default: 512
+        desc: >-
+          The most a part's USDZ may be, in MB: it crosses to PartCAD in one
+          answer. An asset found to be larger is refused, saying so, before
+          the rest of it is fetched.
