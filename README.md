@@ -122,7 +122,7 @@ meshes and the plugin says which files it went without.
 
 | Parameter | Default | What it is |
 | --- | --- | --- |
-| `looks` | `true` | Whether a part's USDZ carries what its look is read from: its shaders, and the PNG, JPEG, BMP, TGA or TIFF images of its colour, roughness and metalness, each of up to 8 MB. ALab's textures are EXR, which PartCAD does not read: its entities are drawn in their `displayColor`. |
+| `looks` | `true` | Whether a part's USDZ carries what its look is read from: its shaders, and the PNG, JPEG, BMP, TGA or TIFF images of its colour, roughness and metalness, each of up to 8 MB. ALab's final textures are EXR, which PartCAD does not read; its entities are drawn in their preview materials instead, whose images are JPEG and are carried (see below). |
 | `textures` | `false` | Whether a part's USDZ carries every texture its layers name, each as it is: ALab's are 4K EXR. |
 | `max_size_mb` | `512` | The most a part's USDZ may be, in MB. |
 
